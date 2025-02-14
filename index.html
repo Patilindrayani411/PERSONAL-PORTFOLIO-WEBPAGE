@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #121212;
+            color: #fff;
+            text-align: center;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #ff9800;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #fff;
+        }
+        section {
+            padding: 100px 20px;
+            max-width: 900px;
+            margin: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .project {
+            background: #1e1e1e;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .project:hover {
+            transform: scale(1.05);
+        }
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+            max-width: 500px;
+            margin: auto;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        .contact-form button {
+            background: #ff9800;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .contact-form button:hover {
+            background: #e67e00;
+        }
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home" class="fade-in">
+        <h1>Welcome to My Portfolio</h1>
+        <p>I'm a passionate developer.</p>
+    </section>
+    
+    <section id="about" class="fade-in">
+        <h2>About Me</h2>
+        <p>I am pursuing MCA & I have strong interestb in web development and python</p>
+    </section>
+    
+    <section id="projects" class="fade-in">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Online Alumni Legacy Hub</h3>
+            <p>This web site for institute alumni,where as new job opportunity will share,various events organize for reunioin of alumni.</p>
+        </div>
+    </section>
+    
+    <section id="contact" class="fade-in">
+        <h2>Contact</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Indrayani Patil</p>
+    </footer>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll("section");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>
